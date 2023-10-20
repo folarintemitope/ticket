@@ -1,7 +1,12 @@
 package com.example.Ticket.Model;
 
     import javax.persistence.*;
-import java.util.List;
+    import javax.persistence.GeneratedValue;
+    import javax.persistence.GenerationType;
+    import javax.persistence.Id;
+    import javax.persistence.criteria.Fetch;
+    import java.util.ArrayList;
+    import java.util.List;
 
     @Entity
     public class Customer {
@@ -9,11 +14,27 @@ import java.util.List;
         @GeneratedValue(strategy = GenerationType.AUTO)
 
 
+        private String customerId;
         private String customerName;
         private String address;
         private String phoneNo;
-        //    @OneToMany(cascade = CascadeType.ALL)
-        private List<Ticket> ticketList;
+        @OneToMany(cascade = CascadeType.ALL)
+        private List<Ticket> ticketList  =new ArrayList<>();
+
+
+        public String getCustomerId() {
+            return customerId;
+        }
+
+        public void setCustomerId(String id) {
+            this.customerId = customerId;
+        }
+
+        public Customer(String id) {
+            this.customerId = customerId;
+        }
+
+
 
         public String getCustomerName() {
             return customerName;
@@ -56,6 +77,7 @@ import java.util.List;
 
         public Customer() {
         }
+
     }
 
 

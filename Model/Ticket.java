@@ -1,16 +1,15 @@
 package com.example.Ticket.Model;
 
-    import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+    import javax.persistence.*;
 
-    @Entity
+@Entity
+@Table
+
     public class Ticket{
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-
-        private String DriverName;
+        private String ticketNo;
+    private String DriverName;
         private String DriverId;
         private String vehicleName;
         private String ffromCity;
@@ -18,8 +17,34 @@ import javax.persistence.Id;
         private String seatingCapacity;
         private String travellerNo;
         private String availability;
+//        @ManyToOne(cascade = CascadeType.ALL)
+//        @JoinColumn(name = "ticket_booking")
+        private Customer customer;
 
-        public String getDriverName() {
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Ticket(Customer customer) {
+        this.customer = customer;
+    }
+    public String getTicketNo() {
+        return ticketNo;
+    }
+
+    public void setTicketNo(String ticketNo) {
+        this.ticketNo = ticketNo;
+    }
+
+    public Ticket(String ticketNo) {
+        this.ticketNo = ticketNo;
+    }
+
+    public String getDriverName() {
             return DriverName;
         }
 
@@ -35,7 +60,7 @@ import javax.persistence.Id;
             DriverId = driverId;
         }
 
-        public String getVehicleNo() {
+        public String getVehicleName() {
             return vehicleName;
         }
 
