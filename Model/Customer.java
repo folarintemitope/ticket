@@ -19,7 +19,7 @@ package com.example.Ticket.Model;
         private String address;
         private String phoneNo;
         @OneToMany(cascade = CascadeType.ALL)
-        private List<Ticket> ticketList  =new ArrayList<>();
+        private List<Ticket> ticketList  = new ArrayList<>();
 
 
         public String getCustomerId() {

@@ -3,37 +3,36 @@ package com.example.Ticket.Controller;
 import com.example.Ticket.Model.Ticket;
 import com.example.Ticket.Service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/todo")
+@RequestMapping(path="/ticket")
 public class TicketController {
     @Autowired
     private TicketService ticketService;
 
 
-    @GetMapping
-    public List<Ticket> viewAllTicket() {
-        return ticketService.getAllTicket();
+    @GetMapping("/create_ticket")
+    public List<Ticket> viewAllTicket(@PathVariable String ticketNo) {
+        return ticketService.getAllTicket(ticketNo);
 
     }
 
-    @PostMapping
-    public Ticket saveTicket(@RequestBody Ticket ticket) {
-        Ticket savedTicket = ticketService.saveAllTicket(ticket);
-        return savedTicket;
+    @PostMapping("/save_ticket")
+    public ResponseEntity saveTicket(@RequestBody Ticket ticket) {
+        ticketService.saveAllTicket(ticket);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteTicket(@PathVariable String customerId) {
-        ticketService.deleteTicket(customerId);
+    @DeleteMapping("/{ticketNo}")
+    public ResponseEntity deleteTicket(@PathVariable String ticketNo) {
+        ticketService.deleteTicket(ticketNo);
+        return new ResponseEntity<>(HttpStatus.GONE);
     }
 
-    @PutMapping
-    public Ticket updateTicket(@RequestBody Ticket ticket) {
-        Ticket savedTicket = ticketService.updateTicket(ticket);
-        return savedTicket;
-    }
+
 }

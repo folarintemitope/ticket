@@ -1,11 +1,9 @@
 package com.example.Ticket.Controller;
 
-    import com.example.Ticket.Repository.CustomerRepository;
-    import com.example.Ticket.Service.CustomerService;
-import com.example.Ticket.Service.TicketService;
+    import com.example.Ticket.Service.CustomerService;;
 import com.example.Ticket.Model.Customer;
-import com.example.Ticket.Model.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
     import org.springframework.http.ResponseEntity;
     import org.springframework.web.bind.annotation.*;
 
@@ -19,26 +17,20 @@ import java.util.List;
             @Autowired
             private CustomerService customerService;
 
-            @GetMapping
-            public List<Customer> getAllCustomer() {
-                return customerService.getAllCustomer;
+            @GetMapping("/create_Customer")
+            public List<Customer> getAllCustomer(@PathVariable String customerId) {
+                return customerService.getAllCustomer(customerId);
             }
 
-            @PostMapping
-            public Customer saveCustomer(@RequestBody Customer customer) {
-                Customer customer1 = customerService.saveCustomer(customer);
-                return customer1;
+            @PostMapping("/save_Customer")
+            public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer){
+                customerService.saveCustomer(customer);
+                return new ResponseEntity<>(HttpStatus.CREATED);
             }
-            @DeleteMapping("/{id}")
-            public Customer deleteUser(@PathVariable String customerId) {
-               Customer delete = customerService.deleteCustomer(customerId);
-               return delete;
-            }
-
-            @PutMapping
-            public Customer updateCustomer(@RequestBody Customer customer) {
-                Customer savedCustomer = customerService.updateCustomer(customer);
-                return savedCustomer;
+            @DeleteMapping("/{customerId}")
+            public ResponseEntity deleteCustomer(@PathVariable String customerId) {
+               customerService.deleteCustomer(customerId);
+               return new ResponseEntity<>(HttpStatus.GONE);
             }
         }
 

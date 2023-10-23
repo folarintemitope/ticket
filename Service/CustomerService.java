@@ -10,47 +10,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class CustomerService {
-    public List<Customer> getAllCustomer;
-    @Autowired
-    TicketRepo ticketRepo;
     @Autowired
     CustomerRepository customerRepository;
-    public List<Customer> getAllCustomer() {
 
-        return customerRepository.findAll();
-    }
-
-    public Customer getCustomerById(String customerId) {
-        return customerRepository.findById(customerId).get();
-
-    }
-    public Customer saveCustomer(Customer customer) {
-        System.out.println("Size: "+customer.getTicketList().size());
-        for (Ticket ticket: customer.getTicketList()){
-            System.out.println(ticket.getDriverId());
-            ticketRepo.save(ticket);
+    public List<Customer> getAllCustomer(String customerId) {
+        if (null != customerId) {
+            return customerRepository.findAllById(customerId);
+        } else {
+            return customerRepository.findAll();
         }
-//        List<Todo> todos = todoRepository.saveAll(user.getTodos());
-//        user.setTodos(todos);
-        Customer saveUser = customerRepository.save(customer);
-
-        return saveUser;
+    }
+    public void saveCustomer(Customer customer) {
+        customerRepository.save(customer);
     }
 
-    public void deleteUSer(String customerId) {
+    public void deleteCustomer(String customerId) {
         customerRepository.deleteById(customerId);
     }
 
-    public Customer updateCustomer(Customer customer) {
-        String customerId = customer.getCustomerId();
-        Customer updated = customerRepository.findById(customerId).get();
-        updated.setCustomerName(customer.getCustomerName());
-        updated.setAddress(customer.getAddress());
-        updated.setPhoneNo(customer.getPhoneNo());
-        return customerRepository.save(updated);
-    }
 
-    public Customer deleteCustomer(String customerId) {
-        return null;
-    }
 }
