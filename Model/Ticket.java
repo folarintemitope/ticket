@@ -3,8 +3,6 @@ package com.example.Ticket.Model;
     import javax.persistence.*;
 
 @Entity
-@Table
-
     public class Ticket{
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,8 +15,8 @@ package com.example.Ticket.Model;
         private String seatingCapacity;
         private String travellerNo;
         private String availability;
-//        @ManyToOne(cascade = CascadeType.ALL)
-//        @JoinColumn(name = "ticket_booking")
+        @ManyToOne(cascade = CascadeType.ALL)
+        @JoinColumn(name = "ticket_booking")
         private Customer customer;
 
     public Customer getCustomer() {
