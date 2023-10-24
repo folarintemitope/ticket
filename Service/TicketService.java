@@ -11,7 +11,7 @@ import java.util.List;
         @Autowired
         TicketRepo ticketRepo;
 
-        public List<Ticket> getAllTicket(String ticketNo) {
+        public List<Ticket> getAllTicket(Long ticketNo) {
           if (null != ticketNo){
             return ticketRepo.findAllByTicketNo(ticketNo);
         } else {
@@ -23,7 +23,7 @@ import java.util.List;
             return  ticketRepo.save(ticket);
         }
 
-        public void deleteTicket(String ticketNo) {
+        public void deleteTicket(Long ticketNo) {
             ticketRepo.deleteById(ticketNo);
         }
 

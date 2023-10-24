@@ -12,29 +12,30 @@ package com.example.Ticket.Model;
     public class Customer {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-
-
-        private String customerId;
+        private Long customerId;
         private String customerName;
         private String address;
         private String phoneNo;
-        @OneToMany(cascade = CascadeType.ALL)
-        private List<Ticket> ticketList  = new ArrayList<>();
+        @ManyToMany(cascade = CascadeType.ALL)
+        private List<Ticket> ticketList = new ArrayList<>();
 
+        public Customer(String customerName,
+                        String address,
+                        String phoneNo,
+                        List<Ticket> ticketList) {
+            this.customerName = customerName;
+            this.address = address;
+            this.phoneNo = phoneNo;
+            this.ticketList = ticketList;
+        }
 
-        public String getCustomerId() {
+        public Long getCustomerId() {
             return customerId;
         }
 
-        public void setCustomerId(String id) {
+        public void setCustomerId(Long customerId) {
             this.customerId = customerId;
         }
-
-        public Customer(String id) {
-            this.customerId = customerId;
-        }
-
-
 
         public String getCustomerName() {
             return customerName;
@@ -68,17 +69,6 @@ package com.example.Ticket.Model;
             this.ticketList = ticketList;
         }
 
-        public Customer(String customerName, String address, String phoneNo, List<Ticket> ticketList) {
-            this.customerName = customerName;
-            this.address = address;
-            this.phoneNo = phoneNo;
-            this.ticketList = ticketList;
-        }
-
         public Customer() {
         }
-
     }
-
-
-

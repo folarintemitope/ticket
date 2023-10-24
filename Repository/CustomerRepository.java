@@ -8,6 +8,6 @@ import java.util.List;
 
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer,String> {
-   List<Customer> findAllById(String customerId);
+public interface CustomerRepository extends JpaRepository<Customer,Long> {
+   List<Customer> findAllByCustomerId(Long customerId);
 }

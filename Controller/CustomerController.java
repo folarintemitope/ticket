@@ -18,7 +18,7 @@ import java.util.List;
             private CustomerService customerService;
 
             @GetMapping("/create_Customer")
-            public List<Customer> getAllCustomer(@PathVariable String customerId) {
+            public List<Customer> getAllCustomer(@PathVariable Long customerId) {
                 return customerService.getAllCustomer(customerId);
             }
 
@@ -28,7 +28,7 @@ import java.util.List;
                 return new ResponseEntity<>(HttpStatus.CREATED);
             }
             @DeleteMapping("/{customerId}")
-            public ResponseEntity deleteCustomer(@PathVariable String customerId) {
+            public ResponseEntity deleteCustomer(@PathVariable Long customerId) {
                customerService.deleteCustomer(customerId);
                return new ResponseEntity<>(HttpStatus.GONE);
             }

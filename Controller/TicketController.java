@@ -17,7 +17,7 @@ public class TicketController {
 
 
     @GetMapping("/create_ticket")
-    public List<Ticket> viewAllTicket(@PathVariable String ticketNo) {
+    public List<Ticket> viewAllTicket(@PathVariable Long ticketNo) {
         return ticketService.getAllTicket(ticketNo);
 
     }
@@ -29,7 +29,7 @@ public class TicketController {
     }
 
     @DeleteMapping("/{ticketNo}")
-    public ResponseEntity deleteTicket(@PathVariable String ticketNo) {
+    public ResponseEntity deleteTicket(@PathVariable Long ticketNo) {
         ticketService.deleteTicket(ticketNo);
         return new ResponseEntity<>(HttpStatus.GONE);
     }

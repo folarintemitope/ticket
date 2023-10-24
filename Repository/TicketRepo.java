@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TicketRepo extends JpaRepository<Ticket,String>{
-    List<Ticket> findAllByTicketNo(String ticketNo);
+public interface TicketRepo extends JpaRepository<Ticket,Long>{
+    List<Ticket> findAllByTicketNo(Long ticketNo);
 }
