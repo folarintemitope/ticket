@@ -1,4 +1,4 @@
-package com.example.Ticket;
+package com.example;
 
 //import com.example.Ticket.Repository.CustomerRepository;
 //import com.example.Ticket.Repository.TicketRepo;

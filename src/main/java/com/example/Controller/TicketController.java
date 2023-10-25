@@ -16,7 +16,7 @@ public class TicketController {
     private TicketService ticketService;
 
 
-    @GetMapping("/create_ticket")
+    @GetMapping("/create_ticket/{ticketNo}")
     public List<Ticket> viewAllTicket(@PathVariable Long ticketNo) {
         return ticketService.getAllTicket(ticketNo);
 

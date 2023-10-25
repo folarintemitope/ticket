@@ -17,12 +17,12 @@ import java.util.List;
             @Autowired
             private CustomerService customerService;
 
-            @GetMapping("/create_Customer")
+            @GetMapping("/create_customer/{customerId}")
             public List<Customer> getAllCustomer(@PathVariable Long customerId) {
                 return customerService.getAllCustomer(customerId);
             }
 
-            @PostMapping("/save_Customer")
+            @PostMapping("/save_customer")
             public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer){
                 customerService.saveCustomer(customer);
                 return new ResponseEntity<>(HttpStatus.CREATED);
