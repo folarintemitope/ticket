@@ -23,16 +23,19 @@ public class TicketController {
     }
 
     @PostMapping("/save_ticket")
-    public ResponseEntity saveTicket(@RequestBody Ticket ticket) {
-        ticketService.saveAllTicket(ticket);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity <Ticket> saveTicket(@RequestBody Ticket ticket) {
+        Ticket ticketSaved = ticketService.saveAllTicket(ticket);
+        return ResponseEntity.status(HttpStatus.CREATED).body(ticketSaved);
     }
 
     @DeleteMapping("/{ticketNo}")
-    public ResponseEntity deleteTicket(@PathVariable Long ticketNo) {
+    public ResponseEntity<?> deleteTicket(@PathVariable Long ticketNo) {
         ticketService.deleteTicket(ticketNo);
         return new ResponseEntity<>(HttpStatus.GONE);
     }
-
+    @PutMapping("/{ticketNo}")
+    public Ticket updateTicket(@RequestBody Ticket ticket, @PathVariable Long ticketNo){
+        return ticketService.updateTicket(ticket, ticketNo);
+    }
 
 }

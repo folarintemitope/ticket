@@ -7,7 +7,7 @@ package com.example.Ticket.Model;
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long ticketNo;
-    private String DriverName;
+        private String DriverName;
         private String DriverId;
         private String vehicleName;
         private String ffromCity;
