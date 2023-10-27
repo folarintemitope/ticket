@@ -21,6 +21,10 @@ public class TicketController {
         return ticketService.getAllTicket(ticketNo);
 
     }
+    @GetMapping("/get_tickets")
+    public List<Ticket> getAllTicket(){
+        return ticketService.getTicket();
+    }
 
     @PostMapping("/save_ticket")
     public ResponseEntity <Ticket> saveTicket(@RequestBody Ticket ticket) {

@@ -12,7 +12,6 @@ import java.util.List;
 
     @RestController
     @RequestMapping(value = "/customer")
-
     public class CustomerController {
 
             @Autowired
@@ -21,6 +20,12 @@ import java.util.List;
             @GetMapping("/create_customer/{customerId}")
             public List<Customer> getAllCustomer(@PathVariable Long customerId) {
                 return customerService.getAllCustomer(customerId);
+
+            }
+            @GetMapping("/get_customers")
+            public  List<Customer> getAllCustomer(){
+                return customerService.getCustomer();
+
             }
 
             @PostMapping("/save_customer")

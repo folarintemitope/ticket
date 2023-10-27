@@ -19,6 +19,9 @@ import java.util.List;
           return ticketRepo.findAll();
           }
         }
+        public List<Ticket> getTicket(){
+            return ticketRepo.findAll();
+        }
 
         public Ticket saveAllTicket(Ticket ticket) {
 
