@@ -11,24 +11,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
     @RestController
-    @RequestMapping(value = "/customer")
+
+    @RequestMapping(value = "/customers")
+
     public class CustomerController {
 
             @Autowired
             private CustomerService customerService;
 
-            @GetMapping("/create_customer/{customerId}")
-            public List<Customer> getAllCustomer(@PathVariable Long customerId) {
+            @GetMapping("/{customerId}")
+            public List<Customer> getCustomer(@PathVariable Long customerId) {
                 return customerService.getAllCustomer(customerId);
 
             }
-            @GetMapping("/get_customers")
+            @GetMapping("/")
             public  List<Customer> getAllCustomer(){
                 return customerService.getCustomer();
 
             }
 
-            @PostMapping("/save_customer")
+            @PostMapping
             public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer){
                Customer customerSaved =  customerService.saveCustomer(customer);
                 return ResponseEntity.status(HttpStatus.CREATED).body(customerSaved);
