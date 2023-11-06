@@ -23,7 +23,7 @@ import java.util.List;
                 return customerService.getAllCustomer(customerId);
             }
 
-            @PostMapping("/save_customer")
+            @PostMapping
             public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer){
                Customer customerSaved =  customerService.saveCustomer(customer);
                 return ResponseEntity.status(HttpStatus.CREATED).body(customerSaved);
