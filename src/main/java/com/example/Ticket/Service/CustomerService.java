@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class CustomerService {
+public class
+CustomerService {
     @Autowired
     CustomerRepository customerRepository;
 

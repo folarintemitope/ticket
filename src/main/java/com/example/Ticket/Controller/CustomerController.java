@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
     @RestController
-    @RequestMapping(value = "/customer")
+    @RequestMapping(value = "/customers")
 
     public class CustomerController {
 
             @Autowired
             private CustomerService customerService;
 
-            @GetMapping("/create_customer/{customerId}")
+            @GetMapping("/{customerId}")
             public List<Customer> getAllCustomer(@PathVariable Long customerId) {
                 return customerService.getAllCustomer(customerId);
             }
